@@ -18,4 +18,4 @@ Responsive design
 
 [Portfolio](https://andreiyakovliev.github.io/portfolio)
 
-[Live Preview](https://andreiyakovliev.github.io/sunnyside-agency-lp)
+[Live Preview](https://andreiyakovliev.github.io/skilled-lp)
