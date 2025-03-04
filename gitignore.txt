@@ -1,0 +1,14 @@
+phpmailer/
+flsStartTemplate/
+node_modules/
+.gitignore
+dist/
+Source/
+version.json
+undefined
+**/*.zip
+**/*.rar
+cover.jpg
+snnipets.txt
+react/
+components/

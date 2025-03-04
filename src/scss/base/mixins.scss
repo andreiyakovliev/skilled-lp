@@ -104,18 +104,45 @@
 	}
 	// Адаптуємо розмір у проміжку між зазначеними ширинами в'юпорту
 	@media (min-width: $widthToMedia) and (max-width: $widthFromMedia) {
+		#{$property}: $propertyValue;
+
 		// Якщо підтримується clamp();
-		@supports (#{$property}: $propertyValue) {
-			#{$property}: $propertyValue;
-		}
+		//@supports (#{$property}: $propertyValue) {
+		//	#{$property}: $propertyValue;
+		//}
 		// Якщо не підтримується clamp();
-		@supports not (#{$property}: $propertyValue) {
-			#{$property}: calc(#{toRem($minSize)} + #{$addSize} * (100vw - #{toRem($widthTo)}) / #{math.div($widthFrom, 16) - math.div($widthTo, 16)});
-		}
+		//@supports not (#{$property}: $propertyValue) {
+		//	#{$property}: calc(#{toRem($minSize)} + #{$addSize} * (100vw - #{toRem($widthTo)}) / #{math.div($widthFrom, 16) - math.div($widthTo, 16)});
+		//}
 	}
 	@if $keepSize != 1 and $keepSize != 2 {
 		@media (max-width: $widthToMedia) {
 			#{$property}: toRem($minSize);
+		}
+	}
+}
+
+// Grid-контейнер
+@mixin gridContainer($type: 0, $container: $maxWidthContainer, $paddingStart: math.div($containerPadding, 2), $paddingEnd: math.div($containerPadding, 2)) {
+	display: grid;
+	min-width: 0;
+	grid-template-columns: toRem($paddingStart) 1fr minmax(auto, toRem($container)) 1fr toRem($paddingEnd);
+	> * {
+		min-width: 0;
+		@if $type==1 {
+			grid-column: 1 / 6;
+		} @else if $type==2 {
+			grid-column: 2 / 5;
+		} @else if $type==3 {
+			grid-column: 3 / 6;
+		} @else if $type==4 {
+			grid-column: 1 / 4;
+		} @else if $type==5 {
+			grid-column: 2 / 4;
+		} @else if $type==6 {
+			grid-column: 3 / 5;
+		} @else {
+			grid-column: 3 / 4;
 		}
 	}
 }
