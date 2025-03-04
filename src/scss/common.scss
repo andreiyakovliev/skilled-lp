@@ -1,0 +1,327 @@
+// Заголовки, загальні БЕМ блоки та інше...
+
+//=============== Page ===============//
+
+.page {
+
+   // .page__content
+
+   &__content {
+      // margin: 148px 0rem 250px 0rem;
+      margin: clamp(4.6875rem, calc(4.6875rem + (148 - 75) * ((100vw - 768px) / (1440 - 768))), 9.25rem)
+         /* top */
+         0
+         /* right */
+         clamp(13.125rem, calc(13.125rem + (250 - 210) * ((100vw - 768px) / (1440 - 768))), 15.625rem)
+         /* bottom */
+         0;
+      /* left */
+
+      @media (max-width:$mobile) {
+         // margin: 148px 0rem 250px 0rem;
+         margin: clamp(22px, calc(2px + (75 - 22) * ((100vw - 48rem) / (1440 - 768))), 75px)
+            /* top */
+            0
+            /* right */
+            clamp(70px, calc(70px + (210 - 70) * ((100vw - 48rem) / (1440 - 768))), 210px)
+            /* bottom */
+            0;
+         /* left */
+      }
+   }
+
+   // .page__container
+
+   &__container {
+      position: relative;
+      padding: 0 clamp(0.9375rem, calc(2.5rem - (40 - 15) * ((100vw - 768px) / (1440 - 768))), 2.5rem);
+
+      @media (max-width:$mobile) {
+         padding: 0 clamp(16px, calc(16px + (40 - 16) * ((100vw - 768px) / (1440 - 768))), 40px);
+      }
+   }
+
+   &__cards {
+      margin-bottom: clamp(5.375rem, calc(5.375rem + (148 - 86) * ((100vw - 768px) / (1440 - 768))), 9.25rem);
+   }
+}
+
+//=============== Text ===============//
+
+.text {
+
+   color: $greyColor;
+   font-family: "Plus Jakarta Sans";
+
+
+   &--medium {
+      font-weight: 400;
+      font-size: clamp(1rem, calc(1rem + (18 - 16) * ((100vw - 768px) / (1440 - 768))), 1.125rem);
+      // line-height: math.div(28, 18);
+      // line-height: 1.625;
+      line-height: clamp(1.75rem, 1.75rem + (1.625 - 1.75) * ((100vw - 768px) / (1440 - 768)), 1.625rem);
+   }
+
+   &--small {
+      font-weight: 700;
+      font-size: clamp(0.875rem, calc(0.875rem + (16 - 14) * ((100vw - 768px) / (1440 - 768))), 1rem);
+      // font-size: 1rem;
+      line-height: 1.75rem;
+      /* 28/16 */
+   }
+
+
+}
+
+//=============== Title ===============//
+
+.title {
+   color: $mainColor;
+   font-family: "Plus Jakarta Sans";
+   font-weight: 800;
+
+
+   &--h1 {
+      // font-size: 56px;
+      // line-height: 71px;
+
+      font-size: clamp(2.5rem, calc(2.5rem + ((56 - 40) * ((100vw - 768px) / (1440 - 768)))), 3.5rem);
+      // font-size: clamp(40px, calc(40px + ((56 - 40) * ((100vw - 768px) / (1440 - 768)))), 56px);
+      // line-height: clamp(1.25, calc(1.25 + (1.268 - 1.25) * ((100vw - 768px) / (1440 - 768))), 1.268);
+      line-height: clamp(3.125rem, calc(3.125rem + (71 - 50) * ((100vw - 768px) / (1440 - 768))), 4.4375rem);
+   }
+
+   &--h2 {
+      // font-size: 40px;
+      // line-height: 50px;
+
+      font-size: clamp(2rem, calc(2rem + ((40 - 32) * ((100vw - 768px) / (1440 - 768)))), 2.5rem);
+      /* Приблизно 32px при зменшенні екрану */
+      line-height: clamp(2.5rem, calc(2.5rem + (50 - 40) * ((100vw - 768px) / (1440 - 768))), 3.125rem);
+   }
+
+   &--h3 {
+      // font-size: 32px;
+      // line-height: 40px;
+
+      font-size: clamp(1.5rem, calc(1.5rem + ((32 - 24) * ((100vw - 768px) / (1440 - 768)))), 2rem);
+      /* Приблизно 24px при зменшенні екрану */
+      line-height: clamp(2rem, calc(2rem + (40 - 32) * ((100vw - 768px) / (1440 - 768))), 2.5rem);
+   }
+
+   &--h4 {
+      // font-size: 24px;
+      // line-height: 30px;
+
+      font-size: clamp(1.25rem, calc(1.25rem + ((24 - 20) * ((100vw - 768px) / (1440 - 768)))), 1.5rem);
+      /* Приблизно 20px при зменшенні екрану */
+      line-height: clamp(1.5625rem, calc(1.5625rem + (30 - 25) * ((100vw - 768px) / (1440 - 768))), 1.875rem);
+   }
+
+   &--white {
+      color: #fff;
+   }
+}
+
+//=============== Cards ===============//
+
+.item__card {
+   transition: all 0.3s ease 0s;
+
+   @media (any-hover: hover) {
+      &:hover {
+         scale: 1.05;
+      }
+   }
+}
+
+.cards {
+
+   &__container {
+      padding: 0 clamp(0.9375rem, calc(2.5rem - (40 - 15) * ((100vw - 768px) / (1440 - 768))), 2.5rem);
+
+      @media (max-width:$mobile) {
+         padding: 0 clamp(16px, calc(16px + (40 - 16) * ((100vw - 768px) / (1440 - 768))), 40px);
+      }
+   }
+
+   &__items {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      // gap: 80px 30px;
+      gap: clamp(3.5rem, calc(3.5rem + (80 - 56) * ((100vw - 768px) / (1440 - 768))), 5rem) clamp(0.625rem, calc(0.625rem + (30 - 10) * ((100vw - 768px) / (1440 - 768))), 1.875rem);
+
+      @media (max-width:$tablet) {
+         grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width:$mobile) {
+         grid-template-columns: auto;
+      }
+   }
+
+   &__item {
+      position: relative;
+   }
+}
+
+.item {
+
+   &__card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      align-content: flex-start;
+   }
+}
+
+.card {
+   background-color: #fff;
+   // padding: toRem(64) toRem(32) toRem(40) toRem(32);
+   padding: clamp(3.5rem, calc(3.5rem + (64 - 56) * ((100vw - 768px) / (1440 - 768))), 4rem) clamp(1.375rem, calc(1.375rem + (32 - 22) * ((100vw - 768px) / (1440 - 768))), 2rem) clamp(2rem, calc(2rem + (40 - 32) * ((100vw - 768px) / (1440 - 768))), 2.5rem) 2rem;
+   border-radius: 0.9375rem;
+   box-shadow: 0px 1.5625rem 3.125rem 0px #06168d0a;
+
+   @media (max-width:$mobile) {
+      @media (max-width:$mobile) {
+         padding: 56px clamp(21px, calc(28px - (28 - 21) * ((100vw - 48rem) / (1440 - 768))), 28px) 32px clamp(21px, calc(28px - (28 - 21) * ((100vw - 48rem) / (1440 - 768))), 28px);
+      }
+   }
+
+   &__content {
+      // flex-grow: 1;
+
+      &:not(:last-child) {
+         margin-bottom: 1.5rem;
+      }
+   }
+
+
+   &--gradient-pink {
+      background: $pinkOrangeGradient;
+
+      @media (max-width:$mobile) {
+         padding: clamp(24px, calc(24px + (56 - 24) * ((100vw - 768px) / (1440 - 768))), 56px) clamp(21px, calc(28px - (28 - 21) * ((100vw - 48rem) / (1440 - 768))), 28px) 32px clamp(21px, calc(28px - (28 - 21) * ((100vw - 48rem) / (1440 - 768))), 28px);
+      }
+   }
+
+   &__icon {
+      width: 3.5rem;
+      /* розмір круга */
+      height: 3.5rem;
+      /* розмір круга */
+      background: $pinkOrangeGradient;
+      /* градієнтний фон */
+      border-radius: 50%;
+      /* робимо елемент круглим */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+         width: 1rem;
+         /* розмір іконки */
+         height: 1rem;
+         /* розмір іконки */
+         object-fit: contain;
+         /* зберігаємо пропорції іконки */
+      }
+   }
+
+   &__title {
+      &:not(:last-child) {
+         margin-bottom: 1.5rem;
+      }
+   }
+
+   &__text {}
+
+   &__link {
+      color: $crimsonColor;
+      font-size: 1.125rem;
+      font-weight: 700;
+      line-height: math.div(28, 18);
+      // letter-spacing: toEm(28, 18);
+
+      @media (any-hover: hover) {
+         &:hover {
+            color: $pinkColor;
+         }
+      }
+   }
+}
+
+//=============== Buttons ===============//
+
+.button {
+   display: inline-flex;
+   // padding: 14px 32px;
+   padding: clamp(0.625rem, calc(0.625rem + ((14 - 10) * ((100vw - 768px) / (1440 - 768)))), 0.875rem)
+      /* top */
+      clamp(1.5rem, calc(1.5rem + ((32 - 24) * ((100vw - 768px) / (1440 - 768)))), 2rem);
+   /* right */
+   border-radius: 1.75rem;
+   transition: all 0.3s ease 0s;
+
+   color: #fff;
+
+   &--blue {
+      background-color: $mainColor;
+
+      @media (any-hover: hover) {
+         &:hover {
+            background: $purpleColor;
+         }
+      }
+   }
+
+   &--gradient-pink {
+      background: $pinkOrangeGradient;
+      border-radius: 1.9688rem;
+      padding: clamp(0.9375rem, calc(15px + ((18 - 15) * ((100vw - 768px) / (1440 - 768)))), 1.125rem)
+         /* top */
+         clamp(2rem, calc(2.375rem - ((38 - 32) * ((100vw - 768px) / (1440 - 768)))), 2.375rem);
+      /* right */
+      // padding: toRem(18) toRem(32);
+
+      @media (any-hover: hover) {
+         &:hover {
+            position: relative;
+
+            &::after {
+               content: '';
+               position: absolute;
+               top: 0;
+               left: 0;
+               width: 100%;
+               height: 100%;
+               background: #ffffff80;
+               border-radius: toRem(31.5);
+            }
+         }
+      }
+   }
+
+   &--gradient-purple {
+      background: $purpleColorGradient;
+
+
+      @media (any-hover: hover) {
+         &:hover {
+            position: relative;
+
+            &::after {
+               content: '';
+               position: absolute;
+               top: 0;
+               left: 0;
+               width: 100%;
+               height: 100%;
+               background: #ffffff80;
+               border-radius: toRem(28);
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,31 @@
+.header {
+
+   // .header__container
+   &__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: clamp(1rem, calc(1rem + (24 - 16) * ((100vw - 768px) / (1440 - 768))), 1.5rem) clamp(1rem, calc(1rem + (40 - 16) * ((100vw - 768px) / (1440 - 768))), 2.5rem);
+      z-index: 100;
+
+      @media (min-width: $mobile) {
+         padding: 1.5rem clamp(0.9375rem, calc(2.5rem - (40 - 15) * ((100vw - 768px) / (1440 - 768))), 2.5rem);
+      }
+   }
+
+   // .header__logo
+   &__logo {
+      max-width: 100%;
+      width: auto;
+
+
+
+      img {
+         max-width: clamp(5.5625rem, calc(5.5625rem + (111.17 - 89) * ((100vw - 768px) / (1440 - 768))), 6.9481rem);
+         height: auto;
+      }
+   }
+
+   // .header__button
+   &__button {}
+}

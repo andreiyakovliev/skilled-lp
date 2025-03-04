@@ -1,0 +1,10 @@
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2.5rem;
+  z-index: 100;
+}
+.header__logo img {
+  max-width: 100%;
+}/*# sourceMappingURL=header.css.map */

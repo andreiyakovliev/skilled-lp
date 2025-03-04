@@ -1,0 +1,128 @@
+<!-- Документація: https://template.fls.guru/template-docs/modul-preloader.html -->
+<div id="fls-preloader">
+	<!-- Скріпт прелоадера -->
+	<script>
+		function preloader() {
+			const preloaderImages = document.querySelector('[data-preloader]') ? document.querySelectorAll('[data-preloader] img') : document.querySelectorAll('img');
+			const preloaderContainer = document.querySelector('#fls-preloader');
+			if (preloaderImages.length) {
+				const preloaderStyleTemplate = `
+                <style>
+                    * {
+                        padding: 0px;
+                        margin: 0px;
+                        border: 0px;
+                        box-sizing: border-box;
+                    }
+                    /* Головний блок */
+                    .fls-preloader{
+                        pointer-events: none;
+                        z-index: -1;
+                        position: fixed;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+								
+                        display: flex;
+								flex-direction: column;
+                        justify-content:center;
+                        align-items: center;
+                    }
+
+						.fls-preloader__logo {
+							margin-bottom: 5px;
+						}
+
+						.progress {
+							height: 4.5px;
+							width: 145.6px;
+							background: linear-gradient(#666ca3 0 0),
+								linear-gradient(#666ca3 0 0),
+								#f74780;
+							background-size: 60% 100%;
+							background-repeat: no-repeat;
+							animation: progress-7x9cg2 3s infinite;
+						}
+
+						@keyframes progress-7x9cg2 {
+							0% {
+								background-position: -150% 0,-150% 0;
+							}
+
+							66% {
+								background-position: 250% 0,-150% 0;
+							}
+
+							100% {
+								background-position: 250% 0, 250% 0;
+							}
+						}
+
+                    .lock body{
+                        overflow: hidden;
+                        touch-action: none;
+                        overscroll-behavior: none;
+                    }
+                    .loading body>*:not(.fls-preloader){
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+                    .loaded body>*:not(.fls-preloader){
+                        transition: opacity 0.5s ease 0s;
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                </style>`;
+
+				document.head.insertAdjacentHTML("beforeend", preloaderStyleTemplate);
+
+				const preloaderTemplate = `
+                    <div class="fls-preloader">
+						  		<div class="fls-preloader__logo"><img src="img/logo.svg" alt="logo"></div>
+                        <div class="progress"></div>
+                    </div>`;
+				document.body.insertAdjacentHTML("beforeend", preloaderTemplate);
+
+				const
+					preloader = document.querySelector('.fls-preloader'),
+					htmlDocument = document.documentElement;
+
+				let imagesLoadedCount = progress = 0;
+
+				htmlDocument.classList.add('loading');
+				htmlDocument.classList.add('lock');
+
+				preloaderImages.forEach(preloaderImage => {
+					const imgClone = document.createElement('img');
+					if (imgClone) {
+						imgClone.onload = imageLoaded;
+						imgClone.onerror = imageLoaded;
+						preloaderImage.dataset.src ? imgClone.src = preloaderImage.dataset.src : imgClone.src = preloaderImage.src;
+					}
+				});
+
+				function imageLoaded() {
+					imagesLoadedCount++;
+					progress = Math.round((100 / preloaderImages.length) * imagesLoadedCount);
+					if (progress >= 100) {
+						addLoadedClass();
+					}
+				}
+
+				function addLoadedClass() {
+					htmlDocument.classList.add('loaded');
+					htmlDocument.classList.remove('lock');
+					htmlDocument.classList.remove('loading');
+					setTimeout(() => {
+						preloader.remove();
+						preloaderContainer.remove();
+					}, 500);
+				}
+			} else {
+				preloaderContainer.remove();
+			}
+		}
+		preloader();
+	</script>
+</div>
