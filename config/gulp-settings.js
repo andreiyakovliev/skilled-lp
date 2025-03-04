@@ -3,7 +3,7 @@ import * as nodePath from 'path';
 const rootFolder = nodePath.basename(nodePath.resolve());
 
 // Шляхи до папки з вихідними даними та папки з результатом
-const buildFolder = `./skilled-lp`;
+const buildFolder = `./dist`;
 const srcFolder = `./src`;
 
 // Шляхи до папок та файлів проекту
